@@ -1,3 +1,17 @@
+INSERT INTO magisair_db.flight_scheduler_schedule (schedule_id, date) VALUES
+('SCHD0001', '2024-12-01'),
+('SCHD0002', '2024-12-02'),
+('SCHD0003', '2024-12-03'),
+('SCHD0004', '2024-12-04'),
+('SCHD0005', '2024-12-05');
+
+INSERT INTO magisair_db.flight_scheduler_flight (flight_no, origin, duration, cost, schedule_id) VALUES
+('FL001', 'New York', '05:00:00', 350.00, 'SCHD0001'),
+('FL002', 'Los Angeles', '06:30:00', 450.00, 'SCHD0002'),
+('FL003', 'London', '08:45:00', 600.00, 'SCHD0003'),
+('FL004', 'Tokyo', '10:15:00', 800.00, 'SCHD0004'),
+('FL005', 'Paris', '07:30:00', 550.00, 'SCHD0005');
+
 INSERT INTO magisair_db.flight_scheduler_destination (city_id, city_name, country, airport) VALUES
 ('C001', 'New York', 'USA', 'John F. Kennedy International Airport'),
 ('C002', 'Los Angeles', 'USA', 'Los Angeles International Airport'),
