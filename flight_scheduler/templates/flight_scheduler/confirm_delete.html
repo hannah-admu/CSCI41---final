@@ -1,0 +1,13 @@
+{% extends 'flight_scheduler/base.html' %}
+
+{% block title %}Confirm Deletion{% endblock %}
+
+{% block content %}
+<h1>Confirm Deletion</h1>
+<p>Are you sure you want to delete this item?</p>
+<form method="POST">
+    {% csrf_token %}
+    <button type="submit">Yes, Delete</button>
+    <a href="{% url 'flight_scheduler:homepage' %}">Cancel</a>
+</form>
+{% endblock %}

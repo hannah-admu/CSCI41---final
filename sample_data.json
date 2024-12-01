@@ -1,0 +1,36 @@
+[
+    {
+        "model": "flight_scheduler.schedule",
+        "pk": "SCHD001",
+        "fields": {
+            "date": "2024-12-01"
+        }
+    },
+    {
+        "model": "flight_scheduler.schedule",
+        "pk": "SCHD002",
+        "fields": {
+            "date": "2024-12-02"
+        }
+    },
+    {
+        "model": "flight_scheduler.flight",
+        "pk": "FL001",
+        "fields": {
+            "origin": "Manila",
+            "duration": "02:00:00",
+            "cost": "1500.00",
+            "schedule": "SCHD001"
+        }
+    },
+    {
+        "model": "flight_scheduler.flight",
+        "pk": "FL002",
+        "fields": {
+            "origin": "Tokyo",
+            "duration": "04:30:00",
+            "cost": "3000.00",
+            "schedule": "SCHD002"
+        }
+    }
+]
