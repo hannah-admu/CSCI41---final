@@ -1,0 +1,65 @@
+{% extends 'flight_scheduler/base.html' %}
+
+{% block title %}Homepage{% endblock %}
+
+{% block content %}
+<h1>Home</h1>
+
+<!-- Create Schedule Form -->
+<h2>Create a New Schedule</h2>
+<form method="POST">
+    {% csrf_token %}
+    {{ schedule_form.as_p }}
+    <button type="submit" name="create_schedule">Create Schedule</button>
+</form>
+
+<!-- Create Flight Form -->
+<h2>Create a New Flight</h2>
+<form method="POST">
+    {% csrf_token %}
+    {{ flight_form.as_p }}
+    <button type="submit" name="create_flight">Create Flight</button>
+</form>
+
+<!-- List Schedules -->
+<h2>Existing Schedules</h2>
+<ul>
+    {% for schedule in schedules %}
+    <li>
+        {{ schedule.schedule_id }} - {{ schedule.date }}
+        <a href="{% url 'flight_scheduler:edit_schedule' schedule.schedule_id %}">Edit</a>
+        <a href="{% url 'flight_scheduler:delete_schedule' schedule.schedule_id %}">Delete</a>
+    </li>
+    {% endfor %}
+</ul>
+
+<!-- List Flights -->
+<h2>Existing Flights</h2>
+<table border="1">
+    <thead>
+        <tr>
+            <th>Flight No</th>
+            <th>Origin</th>
+            <th>Duration</th>
+            <th>Cost</th>
+            <th>Schedule ID</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for flight in flights %}
+        <tr>
+            <td>{{ flight.flight_no }}</td>
+            <td>{{ flight.origin }}</td>
+            <td>{{ flight.duration }}</td>
+            <td>{{ flight.cost }}</td>
+            <td>{{ flight.schedule.schedule_id }}</td>
+            <td>
+                <a href="{% url 'flight_scheduler:edit_flight' flight.flight_no %}">Edit</a>
+                <a href="{% url 'flight_scheduler:delete_flight' flight.flight_no %}">Delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

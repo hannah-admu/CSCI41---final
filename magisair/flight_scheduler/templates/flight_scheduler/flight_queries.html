@@ -1,0 +1,36 @@
+{% extends 'flight_scheduler/base.html' %}
+
+{% block title %}Flight Queries{% endblock %}
+
+{% block content %}
+<h1>Search Flights</h1>
+<form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Search</button>
+</form>
+
+<h2>Results</h2>
+<table border="1">
+    <thead>
+        <tr>
+            <th>Flight Number</th>
+            <th>Origin</th>
+            <th>Duration</th>
+            <th>Cost</th>
+            <th>Schedule</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for flight in queries %}
+        <tr>
+            <td>{{ flight.flight_no }}</td>
+            <td>{{ flight.origin }}</td>
+            <td>{{ flight.duration }}</td>
+            <td>{{ flight.cost }}</td>
+            <td>{{ flight.schedule.schedule_id }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

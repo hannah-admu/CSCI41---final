@@ -1,0 +1,12 @@
+{% extends 'flight_scheduler/base.html' %}
+
+{% block title %}Edit Flight{% endblock %}
+
+{% block content %}
+<h1>Edit Flight</h1>
+<form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Save Changes</button>
+</form>
+{% endblock %}
